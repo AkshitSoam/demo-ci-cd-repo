@@ -18,5 +18,5 @@ steps:
   - --delivery-pipeline=demo-pipeline
   - --region=us-central1-a
   - --images=app=us-central1-a-docker.pkg.dev/project-b9b64406-bb96-4830-8f1/demo-CI-CD-repo/app
-  options:
-    logging: CLOUD_LOGGING_ONLY
+options:
+  logging: CLOUD_LOGGING_ONLY
