@@ -22,6 +22,8 @@ profiles:
   - op: replace
     path: /spec/template/spec/nodeSelector/env
     value: dev
+    target:
+      kind: Deployment   # ✅ FIX
 
 - name: prod
   deploy:
@@ -31,3 +33,5 @@ profiles:
   - op: replace
     path: /spec/template/spec/nodeSelector/env
     value: prod
+    target:
+      kind: Deployment   # ✅ FIX
