@@ -1,0 +1,32 @@
+clouddeploy.yaml
+ 
+ 
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: demo-pipeline
+ 
+serialPipeline:
+  stages:
+  - targetId: dev
+    profiles: ["dev"]
+ 
+  - targetId: prod
+    profiles: ["prod"]
+    requireApproval: true
+ 
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: dev
+gke:
+  cluster: projects/PROJECT_ID/locations/asia-south1/clusters/demo-cluster
+ 
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: prod
+gke:
+  cluster: projects/PROJECT_ID/locations/asia-south1/clusters/demo-cluster
