@@ -1,15 +1,18 @@
-
 apiVersion: skaffold/v4beta1
 kind: Config
- 
+
+build:
+  artifacts:
+  - image: app
+
 manifests:
   rawYaml:
     - k8s/deployment.yaml
     - k8s/service.yaml
- 
+
 deploy:
   kubectl: {}
- 
+
 profiles:
 - name: dev
   deploy:
@@ -19,7 +22,7 @@ profiles:
   - op: replace
     path: /spec/template/spec/nodeSelector/env
     value: dev
- 
+
 - name: prod
   deploy:
     kubectl:
