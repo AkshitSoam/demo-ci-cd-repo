@@ -25,7 +25,7 @@ steps:
   - release-$BUILD_ID
   - --delivery-pipeline=demo-pipeline
   - --region=asia-south1   # ✅ FIXED
-  - --images=app=asia-south1-docker.pkg.dev/project-b9b64406-bb96-4830-8f1/demo-repo/app
+  - --images=app=us-central1-a-docker.pkg.dev/project-b9b64406-bb96-4830-8f1/demo-repo/app
 
 options:
   logging: CLOUD_LOGGING_ONLY
