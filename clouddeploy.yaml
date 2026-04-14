@@ -17,9 +17,7 @@ serialPipeline:
           actions: []
         postdeploy:
           actions: []
-        # 👇 Approval goes here
-        deployParameters: {}
-requireApproval: true
+        requireApproval: true   # ✅ FIXED LOCATION
 
 ---
 apiVersion: deploy.cloud.google.com/v1
