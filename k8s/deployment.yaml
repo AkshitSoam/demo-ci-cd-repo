@@ -12,10 +12,8 @@ spec:
       labels:
         app: demo-app
     spec:
-      nodeSelector:
-        env: dev   # 👈 REQUIRED (base value)
       containers:
       - name: app
-        image: app
+        image: app   # KEEP THIS (important for Cloud Deploy)
         ports:
         - containerPort: 8080

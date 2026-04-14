@@ -1,33 +1,35 @@
 apiVersion: skaffold/v4beta1
 kind: Config
 
+metadata:
+  name: demo-app
+
 build:
   artifacts:
   - image: app
+    context: .
+    docker:
+      dockerfile: Dockerfile
 
 manifests:
   rawYaml:
-    - k8s/deployment.yaml
-    - k8s/service.yaml
+  - deployment.yaml
+  - service.yaml
 
 deploy:
   kubectl: {}
 
 profiles:
 - name: dev
-  deploy:
-    kubectl:
-      defaultNamespace: dev
   patches:
-  - op: replace
-    path: /spec/template/spec/nodeSelector/env
-    value: dev
+  - op: add
+    path: /spec/template/spec/nodeSelector
+    value:
+      env: dev
 
 - name: prod
-  deploy:
-    kubectl:
-      defaultNamespace: prod
   patches:
-  - op: replace
-    path: /spec/template/spec/nodeSelector/env
-    value: prod
+  - op: add
+    path: /spec/template/spec/nodeSelector
+    value:
+      env: prod
